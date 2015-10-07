@@ -10,13 +10,15 @@ openerp.oepetstore = function(instance, local) {
     });
 
     var MyClass = instance.web.Class.extend({
+        init: function(name) {
+            this.name = name;
+        },
         say_hello: function() {
             console.log("hello", this.name);
         },
     });
 
-    var my_object = new MyClass();
-    my_object.name = "Bob";
+    var my_object = new MyClass("Bob");
     my_object.say_hello();
 
     instance.web.client_actions.add('petstore.homepage', 'instance.oepetstore.HomePage');
