@@ -18,7 +18,13 @@ openerp.oepetstore = function(instance, local) {
         },
     });
 
-    var my_object = new MyClass("Bob");
+    var MySpanishClass = MyClass.extend({
+        say_hello: function() {
+            console.log("hola", this.name);
+        },
+    });
+
+    var my_object = new MySpanishClass("Bob");
     my_object.say_hello();
 
     instance.web.client_actions.add('petstore.homepage', 'instance.oepetstore.HomePage');
