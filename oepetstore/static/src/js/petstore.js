@@ -20,7 +20,8 @@ openerp.oepetstore = function(instance, local) {
 
     var MySpanishClass = MyClass.extend({
         say_hello: function() {
-            console.log("hola", this.name);
+            this._super();
+            console.log("translation in Spanish: hola", this.name);
         },
     });
 
