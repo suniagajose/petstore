@@ -19,7 +19,7 @@ openerp.oepetstore = function(instance, local) {
     local.HomePage = instance.Widget.extend({
         className: 'oe_petstore_homepage',
         start: function() {
-            this.$el.append(QWeb.render("HomePageTemplate"));
+            this.$el.append(QWeb.render("HomePageTemplate", {name: "Klaus"}));
         },
     });
 
