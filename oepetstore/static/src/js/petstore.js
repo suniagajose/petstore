@@ -5,18 +5,32 @@ openerp.oepetstore = function(instance, local) {
 
     local.HomePage = instance.Widget.extend({
         start: function() {
-            var products = new local.ProductsWidget(
-                this, ["cpu", "mouse", "keyboard", "graphic card", "screen"], "#00FF00");
-            products.appendTo(this.$el);
+            var widget = new local.ConfirmWidget(this);
+            widget.on("user_chose", this, this.user_chose);
+            widget.appendTo(this.$el);
+        },
+        user_chose: function(confirm) {
+            if (confirm) {
+                console.log("The user agreed to continue");
+            } else {
+                console.log("The user refused to continue");
+            }
         },
     });
 
-    local.ProductsWidget = instance.Widget.extend({
-        template: "ProductsWidget",
-        init: function(parent, products, color) {
-            this._super(parent);
-            this.products = products;
-            this.color = color;
+    local.ConfirmWidget = instance.Widget.extend({
+        events: {
+            'click button.ok_button': function () {
+                this.trigger('user_chose', true);
+            },
+            'click button.cancel_button': function () {
+                this.trigger('user_chose', false);
+            }
+        },
+        start: function() {
+            this.$el.append("<div>Are you sure you want to perform this action?</div>" +
+                            "<button class='ok_button'>Ok</button>" +
+                            "<button class='cancel_button'>Cancel</button>");
         },
     });
 
