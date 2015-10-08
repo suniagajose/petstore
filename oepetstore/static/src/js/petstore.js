@@ -4,12 +4,14 @@ openerp.oepetstore = function(instance, local) {
     var QWeb = instance.web.qweb;
 
     local.GreetingsWidget = instance.Widget.extend({
+        className: 'oe_petstore_greetings',
         start: function() {
             console.log(this.getParent().$el );
         },
     });
 
     local.HomePage = instance.Widget.extend({
+        className: 'oe_petstore_homepage',
         start: function() {
             var greeting = new local.GreetingsWidget(this);
             greeting.appendTo(this.$el);
