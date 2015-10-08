@@ -5,6 +5,12 @@ openerp.oepetstore = function(instance, local) {
 
     local.GreetingsWidget = instance.Widget.extend({
         className: 'oe_petstore_greetings',
+        init: function(parent, name) {
+            // FYI: When overriding the init() method of a
+            // widget you must pass parent to the super() method
+            this._super(parent);  // <-- Like this!
+            this.name = name;
+        },
         start: function() {
             console.log(this.getParent().$el );
         },
@@ -13,9 +19,7 @@ openerp.oepetstore = function(instance, local) {
     local.HomePage = instance.Widget.extend({
         className: 'oe_petstore_homepage',
         start: function() {
-            var greeting = new local.GreetingsWidget(this);
-            greeting.appendTo(this.$el);
-            console.log(this.getChildren()[0].$el);
+            this.$el.append(QWeb.render("HomePageTemplate"));
         },
     });
 
