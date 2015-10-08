@@ -3,9 +3,17 @@ openerp.oepetstore = function(instance, local) {
         _lt = instance.web._lt;
     var QWeb = instance.web.qweb;
 
+    local.GreetingsWidget = instance.Widget.extend({
+        start: function() {
+            this.$el.append("<div>We are so happy to see you again in this menu!</div>");
+        },
+    });
+
     local.HomePage = instance.Widget.extend({
         start: function() {
             this.$el.append("<div>Hello dear Odoo user!</div>");
+            var greeting = new local.GreetingsWidget(this);
+            return greeting.appendTo(this.$el);
         },
     });
 
