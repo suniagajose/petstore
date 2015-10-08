@@ -5,7 +5,7 @@ openerp.oepetstore = function(instance, local) {
 
     local.HomePage = instance.Widget.extend({
         start: function() {
-            console.log("pet store home page loaded");
+            this.$el.append("<div>Hello dear Odoo user!</div>");
         },
     });
 
