@@ -4,12 +4,14 @@ openerp.oepetstore = function(instance, local) {
     var QWeb = instance.web.qweb;
 
     local.GreetingsWidget = instance.Widget.extend({
+        className: 'oe_petstore_greetings',
         start: function() {
             this.$el.append("<div>We are so happy to see you again in this menu!</div>");
         },
     });
 
     local.HomePage = instance.Widget.extend({
+        className: 'oe_petstore_homepage',
         start: function() {
             this.$el.append("<div>Hello dear Odoo user!</div>");
             var greeting = new local.GreetingsWidget(this);
